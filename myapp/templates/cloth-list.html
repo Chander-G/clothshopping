@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center">LIST CLOTH</h1>
+
+    <div class="container w-75 ">
+
+        <div>
+            <a href="{%url 'cloth-add'%}"><button class="btn btn-outline-info">add Cloth</button></a>
+        </div>
+        <table class="table  table-striped">
+            <tr>
+                <th>image</th>
+                <th>name</th>
+                <th>Brand</th>
+                <th>price</th>
+                <th>material</th>
+            </tr>
+            {%for clo in clothees%}
+            <tr>
+            <td>
+                {%if clo.image%}
+                <img class="" src="{{clo.image.url}} " alt="" width=18%">
+                {%endif%}
+            </td>
+
+                <td>{{clo.name}}</td>
+                <td>{{clo.brand}}</td>
+                <td>{{clo.price}}</td>
+                <td>{{clo.material}}</td>
+                <td>
+                    <a href="{%url 'cloth-delete' clo.id%}"><button class="btn btn-outline-info">delete</button></a>
+                    <a href="{%url 'cloth-edit' clo.id%}"><button class="btn btn-outline-info">edit</button></a>
+                    <a href="{%url 'cloth-detail' clo.id%}"><button class="btn btn-outline-info">view</button></a>
+
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    
+    </div>
+</body>
+
+</html>
